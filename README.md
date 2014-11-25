@@ -1,35 +1,51 @@
-# Frickle
+# Dawn
 
-A Boilerplate App for building Apps with Mongoose, SASS, Angular, Gulp, Browserify and Express.
+The next best thing since sliced bread, a.k.a. a Calendar
 
-## Installation
+## Download & Run
 
-- git clone http://github.com/Hyra/Frickle.git myApp
-- cd myApp
+- git clone http://github.com/frederickfogety/dawn.git [folder]
+- cd [folder]
 - npm install
 - gulp
 
 That's it. Now visit [http://localhost:8080](http://localhost:8080) and profit.
 
-## What's in the box
+## What's this gulp business?
 
-A sensible default app that ..
+Gulp is an awesome system that runs on node.js. It is a task runner, and in this project, it is configured to do a few things:
 
-  - uses Browserify to build the client code from the `client` to the `public` folder
-  - uses **$stateProvider** for the (HTML5 PushState supported) routing
-  - uses **SASS** as pre processor
-  - uses an **.editorConfig** file for everyone to enjoy
-  - uses a **.jshintrc**
-  - uses **Gulp** as build tool that does:
-  	- view compiling
-  	- sass conversion
-  	- browserify-ing all teh things
-  	- cleaning the build folder
-  	- jshinting your beautiful code
+-  compiles [CoffeeScript](http://coffeescript.org/) files into js
+-  compiles [Stylus](http://learnboost.github.io/stylus/) files into CSS
+-  compiles [Jade](http://jade-lang.com/) files into HTML
+-  uses [browserify](http://browserify.org/) for nested dependency management 
+-  checks your CoffeeScript code for possible style and code issues at compile-time
+-  *[WIP]* will eventually test your code for you
 
-It comes with an example controller, service, directive and two states using stateprovider so you can see how things work together.
+## Contributing
+
+All source code for the client is situated in `client/`, likewise with the server in `api/`. You should never have to touch `public/`, that is what the browser sees, and is not committed to the git repo, and is constantly overwritten.
+
+### Angular.js
+
+We are using [Angular.js](https://angularjs.org/), which is built by Google, because it is a very good SPA framework, and makes our life super easy. Look up [this](https://www.youtube.com/watch?v=i9MHigUZKEM) tutorial on YouTube if you want to learn more.
+
+### CoffeeScript
+
+CoffeeScript simply provides a nice abstraction away from JS, allowing code to be cleaner and more concise. CoffeeScript also provides some nice reusable functionality which otherwise would take ages to program.
+
+### Stylus, Jade
+
+[Stylus, Jade] is to [CSS, HTML] like Coffeescript is to JS.
+
+### Browserify
+
+Pure wizardry. Just don't ask, it's awesome.
+
 
 ## API
+
+So far the "backend" runs on MongoDB and is written in Node.js and JavaScript, but this will likely change to Postgres and Java, because that's what I want to learn. Sweet.
 
 In `server.js` you will notice an **USE_API** flag you can set. When you set this to true, Frickle will automatically load all your models that live in `api/models`, connect to your MongoDB based on your ENV settings and load up the API routes from `api/routes.js`.
 
