@@ -1,6 +1,6 @@
 #calendar-month-container
-  #calendar-month-column(ng-repeat="column in [0,1,2,3,4,5,6]") {{column}}
-    #calendar-month-cell(ng-repeat="row in [0,1,2,3]") {{row}}
+  #calendar-month-column(ng-repeat="column in [0,1,2,3,4,5,6]")
+    #calendar-month-cell(ng-repeat="row in [0,1,2,3,4]")
       {{findDateByColumnAndRow(column, row)}}
     //- ul(ng-repeat="appointment in appointments | filter:day | orderBy:'time.start'")
       li {{appointment.time.start}} {{appointment.time.end}} {{appointment.label}}
