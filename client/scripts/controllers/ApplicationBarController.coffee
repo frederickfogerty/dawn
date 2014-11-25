@@ -3,5 +3,5 @@ exports.inject = (app) ->
   exports.controller
 
 exports.controller = ($scope) ->
-  $scope.name = "Something"
-  
+  $scope.name = "Calendar App (WIP)"
+  $scope.makers = "Fred and Mac"  
