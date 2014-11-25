@@ -74,3 +74,8 @@ sftp-config.json
 
 ### Bower ###
 bower_components
+
+.settings
+project/target
+project/project
+target

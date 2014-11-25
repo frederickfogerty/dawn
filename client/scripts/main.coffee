@@ -1,26 +1,25 @@
 require('angular')
 
+moment = require('moment')
+require('angular-moment')
 uiRoute = require('angular-ui-router')
-app = angular.module('MyApp', [uiRoute])
+app = angular.module('Dawn', [uiRoute, 'angularMoment'])
 
-require('./services/Auth').inject(app)
 require('./directives/ExampleDirective').inject(app)
+require('./controllers/ApplicationBarController').inject(app)
+
+require('./controllers/CalendarController').inject(app)
 
 app.config( ($locationProvider, $stateProvider) ->
 
   $locationProvider.html5Mode(true)
 
   $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: 'views/home.html',
-    controller: require('./controllers/ExampleCtrl').inject(app)
-  })
-  .state('second', {
-    url: '/second-page',
-    controller: require('./controllers/ExampleCtrl').inject(app),
-    templateUrl: 'views/secondary.html'
-  })
+    .state('calendar', {
+      url: '/',
+      templateUrl: 'views/calendar.html',
+      controller: require('./controllers/CalendarController').inject(app)
+    })
 )
 
 app.run()

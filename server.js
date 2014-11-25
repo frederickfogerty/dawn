@@ -16,7 +16,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('./api/config');
 
 // Do we want to use the Express API from /api ?
-var USE_API = true;
+var USE_API = false;
 
 // Our app
 var app = express();
@@ -29,6 +29,7 @@ if(env === 'development') {
 }
 
 app.use(express.static(__dirname + '/public'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({'extended':'true'}));

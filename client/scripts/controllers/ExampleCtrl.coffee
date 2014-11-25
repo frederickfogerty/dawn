@@ -19,7 +19,7 @@ exports.controller = ($scope, Auth) ->
       console.log data
       if data.error
         console.log "Error signing up"
-        console.log data.error # Do something with the error message, or redirect
+        console.log data.error
       else
         Auth.setLoggedIn true
         console.log "Signed up"
@@ -33,7 +33,7 @@ exports.controller = ($scope, Auth) ->
     ).success (data) ->
       if data.error
         console.log "Error logging in"
-        console.log data.error # Do something with the error message, or redirect
+        console.log data.error
       else
         Auth.setLoggedIn true
         console.log "Logged in"

@@ -1,0 +1,21 @@
+{
+  "name": "dawn",
+  "version": "0.0.1",
+  "homepage": "https://github.com/frederickfogerty/dawn",
+  "description": "The next best thing since sliced bread",
+  "authors": [
+    "Frederick Fogerty"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.4.7"
+  }
+}

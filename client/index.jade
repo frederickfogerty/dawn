@@ -7,6 +7,8 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     base(href="/")
     link(rel="stylesheet" href="css/main.css")
-  body(ng-app="MyApp")
-    div(ui-view)
+  body(ng-app="Dawn")
+    #index-application-bar(ng-controller="ApplicationBarController")
+        {{name}}
+    #index-container(ui-view)
     script(src="js/core.js")

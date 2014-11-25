@@ -16,6 +16,8 @@ plumber = require('gulp-plumber')
 beep = require('beepbeep')
 
 expressServer = require('./server')
+browserSync = require('browser-sync')
+reload      = browserSync.reload
 
 onError = (err) ->
   beep [0,0,0]
@@ -43,6 +45,15 @@ gulp.task "serve", ->
     .on "restart", ->
       console.log "Restarted webserver"
 
+gulp.task 'browser-sync', ->
+  browserSync 
+    server:
+      baseDir: "public"
+      routes: 
+        "/bower_components": "../bower_components"
+    
+    # proxy: 'localhost:8080'
+
 
 # Dev task
 gulp.task "dev", [
@@ -51,6 +62,7 @@ gulp.task "dev", [
   "lint"
   "js"
   "watch"
+  'browser-sync'
 ], ->
 
 
@@ -69,9 +81,10 @@ gulp.task "styles", ->
   # These last two should look familiar now :)
   gulp
     .plumbedSrc "client/styles/**/*.stylus"
-    .pipe stylus()
+    .pipe stylus(use: [require('stylus-type-utils')()])
     .pipe autoprefixer("last 2 versions", "> 1%", "ie 8")
     .pipe gulp.dest "public/css/"
+    .pipe reload stream:true
 
 
 # Browserify task
@@ -91,20 +104,22 @@ gulp.task "views", ->
   gulp.plumbedSrc("client/index.jade")
     .pipe jade()
     .pipe gulp.dest("public/")
+    .pipe reload stream:true
   
   # Any other view files from client/views
   # Will be put in the public/views folder
   gulp.src("client/views/**/*.jade")
     .pipe jade()
     .pipe gulp.dest("public/views/")
+    .pipe reload stream:true
 
 gulp.task "watch", [
-  "serve"
+  # "serve"
   "lint"
 ], ->
   
   # Start live reload server
-  refresh.listen()
+  # refresh.listen()
   
   # Watch our scripts, and when they change run lint and browserify
   gulp.watch [
@@ -113,6 +128,7 @@ gulp.task "watch", [
   ],[
     "lint"
     "js"
+    reload
   ]
   
   # Watch our sass files
@@ -120,7 +136,7 @@ gulp.task "watch", [
   
   # Watch view files
   gulp.watch ["client/**/*.jade"], ["views"]
-  gulp.watch("./public/**")
-    .on "change", refresh.changed
+  # gulp.watch("./public/**")
+  #   .on "change", reload
 
 gulp.task "default", ["dev"]
